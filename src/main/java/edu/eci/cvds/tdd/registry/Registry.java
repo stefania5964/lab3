@@ -1,10 +1,10 @@
 package edu.eci.cvds.tdd.registry;
+
 import java.util.ArrayList;
+
 public class Registry {
-    private Person person;
-    private ArrayList<Integer> ListaDeRegistros = new ArrayList<>();
-    public RegisterResult registerVoter(Person p) {
-        this.person = p ;
+    private ArrayList<Integer> listaDeRegistros = new ArrayList<>();
+    public RegisterResult registerVoter(Person person) {
         RegisterResult respuesta = null ;
         if(!person.isAlive()){
             respuesta = RegisterResult.DEAD;
@@ -12,11 +12,11 @@ public class Registry {
             respuesta = RegisterResult.UNDERAGE;
         } else if (person.getAge() < 0 || person.getAge()>200) {
             respuesta = RegisterResult.INVALID_AGE;
-        }else if(ListaDeRegistros.contains(p.getId())) {
+        }else if(listaDeRegistros.contains(person.getId())) {
             respuesta = RegisterResult.DUPLICATED;
         }else{
             respuesta = RegisterResult.VALID;
-            ListaDeRegistros.add(p.getId());
+            listaDeRegistros.add(person.getId());
         }
         return respuesta;
     }
