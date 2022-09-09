@@ -1,1 +1,6 @@
-  /target
+  target
+  .Ds_Store
+  /nbproject/
+  .idea
+  *.iml
+  
